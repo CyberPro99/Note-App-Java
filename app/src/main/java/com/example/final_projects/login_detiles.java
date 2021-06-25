@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,7 +43,6 @@ public class login_detiles extends AppCompatActivity implements IPickResult {
     Button sendPhoto;
     EditText email, pass, Name, Bio;
     Button SingUp , Submit;
-    ImageView profile;
     FirebaseAuth mAtu;
     User_DataBase dataBase;
 
@@ -66,6 +64,7 @@ public class login_detiles extends AppCompatActivity implements IPickResult {
         pass = findViewById(R.id.edit_pass_3);
         Name = findViewById(R.id.edit_name_sing);
         Bio = findViewById(R.id.edit_desc_1);
+        dataBase = new User_DataBase(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Wait A Moment...");
         progressDialog.setCancelable(false);
@@ -81,6 +80,21 @@ public class login_detiles extends AppCompatActivity implements IPickResult {
             @Override
             public void onClick(View v) {
                 PickImageDialog.build(new PickSetup()).show(login_detiles.this);
+            }
+        });
+        //==========================================================================================
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = Name.getText().toString();
+                String bio = Bio.getText().toString();
+
+                Boolean CheckInsertData = dataBase.InsertUserData(name,bio);
+                if (CheckInsertData) {
+                    Toast.makeText(login_detiles.this, "Successful entry", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(login_detiles.this, "An error occurred while entering", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         //====================================Upload Image to fireStorage========================================================
@@ -135,25 +149,7 @@ public class login_detiles extends AppCompatActivity implements IPickResult {
                 }
             }
         });
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = Name.getText().toString();
-                String bio = Bio.getText().toString();
-
-                Boolean CheckInsertData = dataBase.InsertUserData(name,bio);
-                if (CheckInsertData == true) {
-                    Toast.makeText(login_detiles.this, "Successful entry", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(login_detiles.this, "An error occurred while entering", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
     }
-
-
     //==============================register method==========================================================
     private void new_user(String email, String password) {
         progressDialog.show();

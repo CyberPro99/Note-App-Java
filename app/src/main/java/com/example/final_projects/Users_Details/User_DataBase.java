@@ -6,25 +6,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class User_DataBase extends SQLiteOpenHelper {
-    public static SQLiteDatabase database;
-
-    public User_DataBase(@Nullable Context context) {
-        super(context, "Users_Details", null, 1);
-        database = getWritableDatabase();
+    public User_DataBase(Context context) {
+        super(context, "My_DB", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table UsersDetails(Nmae TEXT primary key , Bio TEXT , dob TEXT)");
+        db.execSQL("create Table UserDetails(name TEXT primary key , bio TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop Table if exists UsersDetails");
-        onCreate(db);
+        db.execSQL("drop Table if exists UserDetails");
     }
 
     //===========================================================================
@@ -33,7 +27,7 @@ public class User_DataBase extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", Name);
-        contentValues.put("Bio", Bio);
+        contentValues.put("bio", Bio);
         long result = DB.insert("UserDetails ", null, contentValues);
         if (result == -1) {
             return false;
@@ -47,7 +41,7 @@ public class User_DataBase extends SQLiteOpenHelper {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", Name);
-        contentValues.put("Bio", Bio);
+        contentValues.put("bio", Bio);
         Cursor cursor;
         cursor = DB.rawQuery("Select * from UserDetails where name = ?", new String[]{Name});
         if (cursor.getCount() > 0) {
@@ -87,5 +81,4 @@ public class User_DataBase extends SQLiteOpenHelper {
         cursor = DB.rawQuery("Select * from UserDetails ", null);
         return cursor;
     }
-
 }
