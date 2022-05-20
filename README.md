@@ -32,7 +32,7 @@
 <img align="left" alt="Git" width="26px" src="https://github.com/devicons/devicon/blob/master/icons/xd/xd-line.svg" style="padding-right:10px;" />
 <img align="left" alt="Git" width="26px" src="https://github.com/devicons/devicon/blob/master/icons/photoshop/photoshop-line.svg" style="padding-right:10px;" />
 <img align="left" alt="Git" width="26px" src="https://github.com/devicons/devicon/blob/master/icons/illustrator/illustrator-line.svg" style="padding-right:10px;" />
-
+<img src="https://user-images.githubusercontent.com/79597045/169583037-ca443c7c-c061-4765-9939-0cbebdf21b57.jpg" width="385px" align="center">
 <br />
 <br />
 
