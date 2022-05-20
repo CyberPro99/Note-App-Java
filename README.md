@@ -48,16 +48,6 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 ## ScreenShot from Application
 <img align="left" src="https://user-images.githubusercontent.com/79597045/169583037-ca443c7c-c061-4765-9939-0cbebdf21b57.jpg" width="385px" align="center">
 <img align="left" src="https://user-images.githubusercontent.com/79597045/169583328-9f5a76e9-d496-46f1-9a20-9b30fc9fb9cc.jpg" width="385px" align="center">
